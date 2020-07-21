@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+button {
+  font-family: "JetBrains Mono", Helvetica, Arial;
+}
+body {
+  /* background: url('background.png'); */
+  /* background-position: center center; */
+  /* background-size: 100%; */
+  background: #333;
+  color: white;
+  margin-bottom: 8rem;
+}
+form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: 0.5%;
+}
+form button {
+  width: 9%;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+}
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages li {
+  padding: 5px 10px;
+}
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+#messages {
+  margin-bottom: 40px;
+}
+
+#content {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#groups {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.selection {
+  margin: auto;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 30px;
+}
+
+.selection button {
+  margin: 2vw;
+  width: 46vw;
+  height: 23vw;
+  background: black;
+  border: solid white 2px;
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+  box-sizing: border-box;
+  transition: all 1s;
+}
+
+.selection button:active {
+  background: #72dec2;
+  transition: all 0s;
+  color: black;
+}
+
+.selection button.enabled {
+  background: #274c42;
+  border-color: #72dec2;
+  color: #72dec2;
+  transition: all 1s;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  padding: 1rem;
+}
+
+a,
+a:active,
+a:visited {
+  color: #72dec2;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background: black;
+  padding: 1rem;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #72dec2;
+  border-color: #72dec2 transparent #72dec2 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

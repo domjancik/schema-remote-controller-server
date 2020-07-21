@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Schéma Remote Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/JetBrainsMono.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192"/>
+  </head>
+  <body>
+    <h1 onclick="$('#content').slideToggle()">Scenes</h1>
+    <div id="content" class="selection"><div class="lds-dual-ring"></div></div>
+    <h1 onclick="$('#stacks').slideToggle()">Stacks</h1>
+    <div id="stacks" class="selection"><div class="lds-dual-ring"></div></div>
+    <h1 onclick="$('#groups').slideToggle()">Groups</h1>
+    <div id="groups" class="selection"><div class="lds-dual-ring"></div></div>
+    <p>
+      Click Scenes or Stacks to load them to selected groups.
+    </p>
+    <p>
+      No groups selected means assign to all.
+    </p>
+    <div id="footer">
+      <div style="float: left;">
+        <a href="https://schema.scenic.tools" target="_blank">
+          <img src="images/logo.png" style="height: 4rem;" />
+        </a>
+      </div>
+      <div style="float: right;">
+        <p style="text-align: right;">
+          <a href="https://schema.scenic.tools" target="_blank">Schéma</a> Remote Controller<br />
+          ©2020
+          <a href="https://www.domj.net" target="_blank">Dominik Jančík</a>
+        </p>
+      </div>
+    </div>
+    <!-- <ul id="messages"></ul> -->
+    <!-- <form action=""> -->
+    <!-- <input id="m" autocomplete="off" /><button>Send</button> -->
+    <!-- </form> -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        enabledGroups = new Set();
+
+        var socket = io();
+        const reload = () => {
+          socket.emit("listGroups");
+          socket.emit("listContent");
+          socket.emit("listStacks");
+        };
+
+        reload();
+
+        socket.on("groups", function (msg) {
+          $("#groups").empty();
+
+          msg.forEach((element) => {
+            const groupElement = $("<button>").text(element);
+            groupElement.click(() => {
+              groupElement.toggleClass("enabled");
+
+              if (groupElement.hasClass("enabled")) {
+                enabledGroups.add(element);
+              } else {
+                enabledGroups.delete(element);
+              }
+
+              console.log(enabledGroups);
+            });
+
+            $("#groups").append(groupElement);
+          });
+        });
+
+        socket.on("content", function (msg) {
+          $("#content").empty();
+
+          msg.forEach((element) => {
+            const contentElement = $("<button>").text(element);
+            contentElement.click(() => {
+              socket.emit("loadContent", {
+                groups: Array.from(enabledGroups),
+                scene: element,
+              });
+            });
+
+            $("#content").append(contentElement);
+          });
+        });
+
+        socket.on("stacks", function (msg) {
+          $("#stacks").empty();
+
+          msg.forEach((element) => {
+            const stackElement = $("<button>").text(element);
+            stackElement.click(() => {
+              socket.emit("assignStack", {
+                groups: Array.from(enabledGroups),
+                scene: element,
+              });
+            });
+
+            $("#stacks").append(stackElement);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
