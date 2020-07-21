@@ -1,14 +1,18 @@
 @font-face {
-    font-family: 'JetBrains Mono';
-    src: url('JetBrainsMono-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-         url('JetBrainsMono-Regular.woff') format('woff'), /* Pretty Modern Browsers */
-         url('JetBrainsMono-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
-  }
-  
-  @font-face {
-    font-family: 'JetBrains Mono';
-    font-weight: bold;
-    src: url('JetBrainsMono-Bold.woff2') format('woff2'), /* Super Modern Browsers */
-         url('JetBrainsMono-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-         url('JetBrainsMono-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
-  }
+  font-family: "JetBrains Mono";
+  src: url("JetBrainsMono-Regular.eot");
+  src: url("JetBrainsMono-Regular.eot") format("embedded-opentype"),
+    url("JetBrainsMono-Regular.woff2") format("woff2"),
+    url("JetBrainsMono-Regular.woff") format("woff"),
+    url("JetBrainsMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: bold;
+  src: url("JetBrainsMono-Bold.eot");
+  src: url("JetBrainsMono-Bold.eot") format("embedded-opentype"),
+    url("JetBrainsMono-Bold.woff2") format("woff2"),
+    url("JetBrainsMono-Bold.woff") format("woff"),
+    url("JetBrainsMono-Bold.ttf") format("truetype");
+}

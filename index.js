@@ -38,12 +38,12 @@ io.on('connection', function(socket){
   })
 
   socket.on('loadContent', msg => {
-    console.log("Request content load: " + msg);
+    console.log("Request content load: " + JSON.stringify(msg));
     socket.broadcast.emit('loadContent', msg)
   })
 
   socket.on('assignStack', msg => {
-    console.log("Request stack assign: " + msg);
+    console.log("Request stack assign: " + JSON.stringify(msg));
     socket.broadcast.emit('assignStack', msg)
   })
 
