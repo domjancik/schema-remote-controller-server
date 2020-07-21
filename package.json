@@ -1,5 +1,5 @@
 {
-  "name": "schema-remote-controller",
+  "name": "schema-remote-controller-server",
   "version": "0.0.1",
   "description": "Schema Remote Controller Server",
   "dependencies": {
@@ -9,5 +9,10 @@
   "bin": "index.js",
   "scripts": {
     "start": "node index.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domjancik/schema-remote-controller-server.git"
+  },
+  "license": "MIT"
 }
