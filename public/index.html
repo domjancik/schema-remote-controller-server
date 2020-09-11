@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/JetBrainsMono.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192"/>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192" />
   </head>
   <body>
     <h1 onclick="$('#content').slideToggle()">Scenes</h1>
@@ -14,6 +14,18 @@
     <div id="stacks" class="selection"><div class="lds-dual-ring"></div></div>
     <h1 onclick="$('#groups').slideToggle()">Groups</h1>
     <div id="groups" class="selection"><div class="lds-dual-ring"></div></div>
+    <div class="pad">
+      <label for="master">Master</label
+      ><input
+        id="master"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="1"
+        class="full"
+      />
+    </div>
     <p>
       Click Scenes or Stacks to load them to selected groups.
     </p>
@@ -28,7 +40,8 @@
       </div>
       <div style="float: right;">
         <p style="text-align: right;">
-          <a href="https://schema.scenic.tools" target="_blank">Schéma</a> Remote Controller<br />
+          <a href="https://schema.scenic.tools" target="_blank">Schéma</a>
+          Remote Controller<br />
           ©2020
           <a href="https://www.domj.net" target="_blank">Dominik Jančík</a>
         </p>
@@ -104,6 +117,15 @@
 
             $("#stacks").append(stackElement);
           });
+        });
+
+        socket.on("master", msg => {
+          console.log(msg);
+          $("#master").val(msg)
+        })
+
+        $("#master").on("input", (ev) => {
+          socket.emit("master", ev.target.value);
         });
       });
     </script>

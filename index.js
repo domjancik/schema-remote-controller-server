@@ -47,6 +47,11 @@ io.on('connection', function(socket){
     socket.broadcast.emit('assignStack', msg)
   })
 
+  socket.on('master', msg => {
+    console.log("Set master: " + msg);
+    socket.broadcast.emit('master', msg)
+  })
+
   socket.on('groups', msg => {
     console.log('groups: ' + msg);
     socket.broadcast.emit('groups', msg)

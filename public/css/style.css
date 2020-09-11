@@ -149,3 +149,12 @@ a:visited {
     transform: rotate(360deg);
   }
 }
+
+input.full {
+  width: 100%;
+}
+
+.pad {
+  padding: 1rem;
+
+}
