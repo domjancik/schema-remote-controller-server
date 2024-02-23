@@ -4,7 +4,7 @@
   "description": "Schema Remote Controller Server",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^1.7.3"
+    "socket.io": "^2.5.0"
   },
   "bin": "index.js",
   "scripts": {
